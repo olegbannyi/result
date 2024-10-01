@@ -1,6 +1,7 @@
 # Result
 
-Wrapping a function's return value to avoid direct handling of "nil" and to increase flexibility in error handling
+Wrapping a function's return value to avoid direct handling of "nil" and to increase flexibility in error handling.
+Inspired by [Rust error handling](https://doc.rust-lang.org/std/result/)
 
 ## Example of some math function - division
 ```go
