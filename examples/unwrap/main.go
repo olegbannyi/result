@@ -13,14 +13,14 @@ type Number interface {
 type MathOpError int
 
 const (
-	DevideZeroError MathOpError = 1 << iota
+	DivideZeroError MathOpError = 1 << iota
 	SomeOtherError
 )
 
 func (e MathOpError) Error() string {
 	switch e {
-	case DevideZeroError:
-		return "cannot be deived by zero"
+	case DivideZeroError:
+		return "cannot be divided by zero"
 	default:
 		return "some math op error"
 	}
@@ -34,33 +34,33 @@ func main() {
 		}
 	}()
 
-	res := devideInt(6, 2).Unwrap()
+	res := divideInt(6, 2).Unwrap()
 
 	fmt.Printf("Result: %v\n", res)
 
-	resInt := devideGeneric(10, 2).Unwrap()
+	resInt := divideGeneric(10, 2).Unwrap()
 	fmt.Printf("Result: %v\n", resInt)
 
-	resFloat := devideGeneric(3.6, 2).Unwrap()
+	resFloat := divideGeneric(3.6, 2).Unwrap()
 	fmt.Printf("Result: %v\n", resFloat)
 
 	// Panic
-	resGen := devideGeneric(3.6, 0).Unwrap()
+	resGen := divideGeneric(3.6, 0).Unwrap()
 	fmt.Printf("Result: %v\n", resGen)
 }
 
-func devideInt(x, y int) result.Result[int] {
+func divideInt(x, y int) result.Result[int] {
 	if y == 0 {
-		return result.Err[int](DevideZeroError)
+		return result.Err[int](DivideZeroError)
 	}
 
 	res := x / y
 	return result.Ok(res)
 }
 
-func devideGeneric[T Number](x, y T) result.Result[T] {
+func divideGeneric[T Number](x, y T) result.Result[T] {
 	if y == 0 {
-		return result.Err[T](DevideZeroError)
+		return result.Err[T](DivideZeroError)
 	}
 
 	res := x / y
