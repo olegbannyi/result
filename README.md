@@ -43,7 +43,7 @@ func divideGeneric[T Number](x, y T) result.Result[T] {
 	return result.Ok(res)
 }
 ```
-## Example of usage of `result.Result[T]` for given math function:
+## Examples of usage of `result.Result[T]` for given math function:
 ### `result.Result[T].Unwrap()`
 ```go
 // Success
